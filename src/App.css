@@ -5,7 +5,7 @@
   --color-borderWhite: rgb(100, 100, 100);
   --font-poppinsGoogle: "Poppins", sans-serif;
 }
-
+@plugin 'tailwind-scrollbar';
 body {
   @apply  bg-backgroundChat text-white font-poppinsGoogle;
 }
