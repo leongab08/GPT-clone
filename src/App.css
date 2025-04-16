@@ -7,5 +7,5 @@
 }
 @plugin 'tailwind-scrollbar';
 body {
-  @apply  bg-backgroundChat text-white font-poppinsGoogle;
+  @apply bg-backgroundChat text-white font-poppinsGoogle;
 }
