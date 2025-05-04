@@ -5,7 +5,7 @@ import React, { useEffect, useRef, useState } from "react";
 import GptSvg from "./assets/chatgpt.svg";
 import PurpleGptSvg from "./assets/chatgptPurple.svg";
 //Icons
-import { CiChat1 } from "react-icons/ci";
+import { CiChat1, CiGlass } from "react-icons/ci";
 import { FaPlus } from "react-icons/fa";
 import { IoMdHome } from "react-icons/io";
 import { IoIosRocket } from "react-icons/io";
@@ -35,6 +35,7 @@ function App() {
   };
 
   const handleSend = async () => {
+    console.log("handle SENd");
     const res = await sendMsgToAI(input);
     setMessages([
       ...messages,

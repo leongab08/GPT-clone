@@ -1,14 +1,9 @@
-import OpenAI from "openai";
-
-const openai = new OpenAI({apiKey: 'sk-proj-xNn_WeB5ZLsuM0Eh01CrgOFzHHgaA0OVYV2eCPT0ujZbbAdg62JvqXrsExCrj9uHuyNIUaBf9TT3BlbkFJJApLfZGIiWwK11l5VFRc1Kk6stvOaVurJPIGobRKd4YpmIyEhrEb7pRNWjCeZV', dangerouslyAllowBrowser: true});
-
 export async function sendMsgToAI(message) {
-    const res = await openai.responses.create({
-        model: "gpt-4.1-nano",
-        input: message,
-        temperature: 0.7,
-        top_p:1,
-    })    
-
-    return res.output[0].content[0].text;
-}
+    const res = await fetch("/api/sendMessage", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message }),
+    });
+    const data = await res.json();
+    return data.reply;
+  }
