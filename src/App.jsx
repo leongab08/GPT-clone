@@ -12,6 +12,7 @@ import { IoIosRocket } from "react-icons/io";
 import { FaBookmark } from "react-icons/fa";
 import { FaRegUserCircle } from "react-icons/fa";
 import { IoSend } from "react-icons/io5";
+import { BiMenuAltLeft } from "react-icons/bi";
 
 // OpenAIAPI
 import { sendMsgToAI } from "./openai";
@@ -19,6 +20,7 @@ import { sendMsgToAI } from "./openai";
 function App() {
   const [input, setInput] = useState("");
   const msgEnd = useRef(null);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [messages, setMessages] = useState([
@@ -63,11 +65,32 @@ function App() {
 
   return (
     <div data-ui="App" className="min-h-screen flex scroll-smooth max-h-screen">
+      <header className="lg:hidden fixed w-screen z-10 bg-backgroundChat border-b border-b-borderWhite p-3 text-white rounded flex justify-between">
+        <button onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
+        <BiMenuAltLeft className="text-3xl text-amber-50"/>
+        </button>
+        
+        <img src={PurpleGptSvg} />
+
+        <button
+            onClick={handleInfoClick}
+            data-ui="Suscription-btn"
+            className="flex gap-2 items-center text-md cursor-pointe"
+          >
+            <IoIosRocket className="text-amber-50 text-4xl  hover:text-violet-500 transition-all duration-300 ease-in-out " />
+          </button>
+      </header>
+
       <div
         data-ui="sidebar"
-        className="flex-3 flex flex-col border-r-1 border-borderWhite h-screen"
+        className={`${
+          isSidebarOpen ? "block" : "hidden"
+        } lg:flex flex-3 flex-col border-r border-borderWhite h-screen fixed lg:static bg-backgroundChat z-40 w-64`}
       >
-        <div data-ui="upperSide" className="flex flex-col p-7 h-7/10 ">
+        <button onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
+        <BiMenuAltLeft className="text-3xl text-amber-50 absolute cursor-pointer lg:hidden left-4"/>
+        </button>
+        <div data-ui="upperSide" className="flex flex-col p-7 sm:h-7/10 h-6/10 lg:mt-0 mt-2">
           <div className="flex items-center">
             <img
               src={isHovered ? PurpleGptSvg : GptSvg}
@@ -155,7 +178,7 @@ function App() {
       <div data-ui="main" className="flex-9 font-poppinsGoogle">
         <div
           data-ui="chat-box"
-          className="h-12/14 border-borderWhite px-[50px] pt-[50px] flex flex-col gap-9 overflow-hidden overflow-y-scroll scrollbar-thin scroll-smooth scrollbar-thumb-purple-600 scrollbar-track-zinc-800"
+          className="lg:h-12/14 h-12/14 border-borderWhite px-[50px] pt-[50px] flex flex-col gap-9 overflow-hidden overflow-y-scroll scrollbar-thin scroll-smooth scrollbar-thumb-purple-600 scrollbar-track-zinc-800"
         >
           {messages.map((msj, index) => {
             const isBot = msj.isBot;
@@ -197,7 +220,7 @@ function App() {
         </div>
         <div
           data-ui="chat-footer"
-          className="h-2/14 flex flex-col justify-end items-center"
+          className="lg:h-2/14 lg:pt-0 h-fit absolute md:static bottom-0 flex flex-col justify-end items-center pt-3 bg-backgroundChat lg:bg-transparent"
         >
           <div
             data-ui="user-input-box"
@@ -219,7 +242,7 @@ function App() {
           </div>
           <span
             data-ui="disclaimer"
-            className="font-poppinsGoogle text-xs mt-4 mb-3"
+            className="font-poppinsGoogle text-xs mt-4 mb-3 text-center"
           >
             ChatGPT can make mistakes. Please consider verifying important
             information.
