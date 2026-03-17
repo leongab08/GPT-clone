@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 
 // Logos
 import GptSvg from "./assets/chatgpt.svg";
-import PurpleGptSvg from "./assets/chatgptPurple.svg";
+import AccentGptSvg from "./assets/chatgptPurple.svg";
 //Icons
 import { CiChat1, CiGlass } from "react-icons/ci";
 import { FaPlus } from "react-icons/fa";
@@ -71,14 +71,14 @@ function App() {
         <BiMenuAltLeft className="text-3xl text-amber-50"/>
         </button>
         
-        <img src={PurpleGptSvg} />
+        <img src={AccentGptSvg} />
 
         <button
             onClick={handleInfoClick}
             data-ui="Suscription-btn"
             className="flex gap-2 items-center text-md cursor-pointe"
           >
-            <IoIosRocket className="text-amber-50 text-4xl  hover:text-violet-500 transition-all duration-300 ease-in-out " />
+            <IoIosRocket className="text-amber-50 text-4xl  hover:text-sky-400 transition-all duration-300 ease-in-out " />
           </button>
       </header>
 
@@ -94,7 +94,7 @@ function App() {
         <div data-ui="upperSide" className="flex flex-col p-7 sm:h-7/10 h-6/10 lg:mt-0 mt-2">
           <div className="flex items-center">
             <img
-              src={isHovered ? PurpleGptSvg : GptSvg}
+              src={isHovered ? AccentGptSvg : GptSvg}
               alt="LogoGpt"
               data-ui="logoGPT"
               className="w-[50px] mr-3 transition-all duration-500 ease-in-out transform scale-100"
@@ -107,7 +107,7 @@ function App() {
           </div>
           <button
             data-ui="newChatBtn"
-            className="flex justify-center gap-3 hover:bg-violet-600  transition-colors duration-300 ease-in-out cursor-pointer items-center text-xl mt-7 p-4 rounded-md w-full bg-purple-600"
+            className="flex justify-center gap-3 hover:bg-sky-500  transition-colors duration-300 ease-in-out cursor-pointer items-center text-xl mt-7 p-4 rounded-md w-full bg-sky-400"
             onClick={() => {
               setMessages([
                 {
@@ -149,7 +149,7 @@ function App() {
             className="flex gap-2 items-center text-md cursor-pointer"
             onClick={handleInfoClick}
           >
-            <IoMdHome className="text-purple-600 text-4xl hover:text-violet-500 transition-all duration-300 ease-in-out" />
+            <IoMdHome className="text-sky-400 text-4xl hover:text-sky-300 transition-all duration-300 ease-in-out" />
             <span className="hover:font-bold transition-all duration-300 ease-in-out mt-1">
               Home
             </span>
@@ -159,7 +159,7 @@ function App() {
             data-ui="Saved-btn"
             className="flex gap-[11px] items-center text-md cursor-pointer"
           >
-            <FaBookmark className="text-purple-600 text-3xl ml-[3px]  hover:text-violet-500 transition-all duration-300 ease-in-out " />
+            <FaBookmark className="text-sky-400 text-3xl ml-[3px]  hover:text-sky-300 transition-all duration-300 ease-in-out " />
             <span className="hover:font-bold transition-all duration-300 ease-in-out">
               Saved
             </span>
@@ -169,7 +169,7 @@ function App() {
             data-ui="Suscription-btn"
             className="flex gap-2 items-center text-md cursor-pointer"
           >
-            <IoIosRocket className="text-purple-600 text-4xl  hover:text-violet-500 transition-all duration-300 ease-in-out " />
+            <IoIosRocket className="text-sky-400 text-4xl  hover:text-sky-300 transition-all duration-300 ease-in-out " />
             <span className="hover:font-bold transition-all duration-300 ease-in-out">
               Upgradge to Pro
             </span>
@@ -179,7 +179,7 @@ function App() {
       <div data-ui="main" className="flex-9 font-poppinsGoogle">
         <div
           data-ui="chat-box"
-          className="lg:h-12/14 h-12/14 border-borderWhite px-[50px] pt-[50px] flex flex-col gap-9 overflow-hidden overflow-y-scroll scrollbar-thin scroll-smooth scrollbar-thumb-purple-600 scrollbar-track-zinc-800"
+          className="lg:h-12/14 h-12/14 border-borderWhite px-[50px] pt-[50px] flex flex-col gap-9 overflow-hidden overflow-y-scroll scrollbar-thin scroll-smooth scrollbar-thumb-sky-400 scrollbar-track-zinc-800"
         >
           {messages.map((msj, index) => {
             const isBot = msj.isBot;
@@ -192,13 +192,13 @@ function App() {
                 className={`${
                   isBot
                     ? "flex gap-3 w-fit bg-[#1e1e2e] rounded-b-4xl rounded-tr-4xl self-start p-2.5 max-w-9/10"
-                    : "flex gap-3 w-fit bg-gradient-to-b from-purple-600 to-violet-500 rounded-b-4xl rounded-tl-4xl self-end p-2.5 max-w-9/10"
+                    : "flex gap-3 w-fit bg-gradient-to-b from-sky-400 to-sky-500 rounded-b-4xl rounded-tl-4xl self-end p-2.5 max-w-9/10"
                 } ${baseClasses}`}
               >
                 {isBot ? (
                   <>
                     <img
-                      src={PurpleGptSvg}
+                      src={AccentGptSvg}
                       className="w-[50px] h-[50px] object-cover shrink-0 self-start mt-3 ml-2"
                     />
                     <p className="text-[15px] text-left leading-[1.75] p-2 self-center">
@@ -238,7 +238,7 @@ function App() {
               onKeyDown={handleEnter}
             />
             <button onClick={handleSend}>
-              <IoSend className="w-[40px] h-[30px] text-purple-600 shrink-0 cursor-pointer hover:text-amber-50 transition-colors duration-300 ease-in-out" />
+              <IoSend className="w-[40px] h-[30px] text-sky-400 shrink-0 cursor-pointer hover:text-amber-50 transition-colors duration-300 ease-in-out" />
             </button>
           </div>
           <span
@@ -260,7 +260,7 @@ function App() {
             </p>
             <button
               onClick={() => setShowModal(false)}
-              className="bg-purple-600 hover:bg-purple-900 text-white px-4 py-2 rounded transition duration-300 cursor-pointer"
+              className="bg-sky-400 hover:bg-sky-600 text-white px-4 py-2 rounded transition duration-300 cursor-pointer"
             >
               Close
             </button>
